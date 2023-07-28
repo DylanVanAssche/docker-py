@@ -347,15 +347,15 @@ class APIClient(
             sock = response.raw._fp.fp.raw
             if self.base_url.startswith("https://"):
                 sock = sock._sock
-        try:
+        #try:
             # Keep a reference to the response to stop it being garbage
             # collected. If the response is garbage collected, it will
             # close TLS sockets.
-            sock._response = response
-        except AttributeError:
+        #    sock._response = response
+        #except AttributeError:
             # UNIX sockets can't have attributes set on them, but that's
             # fine because we won't be doing TLS over them
-            pass
+        #    pass
 
         self._sockets_ref.add(sock)
         self._sockets_ref.add(response)
